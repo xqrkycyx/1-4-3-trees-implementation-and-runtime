@@ -9,6 +9,7 @@ class BinarySearchTree {
 
   insert(key, value) {
     // your solution here
+
     if (this.key == null) {
       this.key = key;
       this.value = value;
@@ -27,8 +28,18 @@ class BinarySearchTree {
     }
   }
 
-  find() {
+  find(key) {
     // your solution here
+
+    if (this.key == key) {
+      return this.value;
+    } else if (key < this.key && this.left) {
+      return this.left.find(key);
+    } else if (key > this.key && this.right) {
+      return this.right.find(key);
+    } else {
+      throw new Error("Key Not Found");
+    }
   }
 
   remove() {
